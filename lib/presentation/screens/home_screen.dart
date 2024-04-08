@@ -151,10 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           secondary: Icon(Icons.nightlight_outlined),
                           title: Text("Night Mode"),
                           onChanged: (value) {
-                            BlocProvider.of<AppBloc>(context).add(
-                                ChangeThemeAppEvent(
-                                    isNightMode:
-                                        !appState.appModel.isNightMode));
+                            BlocProvider.of<AppBloc>(context).add(ChangeThemeAppEvent(isNightMode: !appState.appModel.isNightMode));
                           },
                         ),
                         Divider(),
@@ -165,10 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           title: Text("Logout"),
                           onTap: () async {
                             await FirebaseAuth.instance.signOut();
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => LoginScreen()));
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
                           },
                         )
                       ],
