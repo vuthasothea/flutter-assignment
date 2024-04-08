@@ -1,5 +1,7 @@
 import 'package:final_project_with_firebase/core/themes/app_theme.dart';
+import 'package:final_project_with_firebase/presentation/screens/home_screen.dart';
 import 'package:final_project_with_firebase/presentation/screens/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
       title: 'Final Project',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
-      home: LoginScreen(),
+      home: FirebaseAuth.instance.currentUser != null ? HomeScreen() : LoginScreen(),
       builder: EasyLoading.init(),
     );
   }
