@@ -54,6 +54,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: Text("Enterainment news"),
                 ),
                 Divider(),
+                SwitchListTile(
+                  value: true,
+                  secondary: Icon(Icons.nightlight_outlined),
+                  title: Text("Night Mode"),
+                  onChanged: (value) {
+                    
+                  },
+                ),
+                Divider(),
                 ListTile(
                   iconColor: Colors.red[900],
                   textColor: Colors.red[900],
