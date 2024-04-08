@@ -15,5 +15,18 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       emit(AppLoadedState(appModel: appModel));
     });
 
+    on<ChangeThemeAppEvent>((event, emit) async {
+      var currentState = state;
+      if(currentState is AppLoadedState) {
+        var appModel = currentState.appModel;
+        appModel.isNightMode = event.isNightMode;
+
+        AppRepository repository = AppRepository();
+        await repository.setAppSetting(appModel);
+
+        emit(AppLoadedState(appModel: appModel));
+      }
+    });
+
   }
 }

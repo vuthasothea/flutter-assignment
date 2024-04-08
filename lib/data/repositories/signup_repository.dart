@@ -1,11 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:final_project_with_firebase/core/exceptions/signup_exception.dart';
 import 'package:final_project_with_firebase/data/models/signup_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignupRepository {
-
-  final db = FirebaseFirestore.instance;
 
   Future<void> createNewAccount(SignupModel model) async {
     try {

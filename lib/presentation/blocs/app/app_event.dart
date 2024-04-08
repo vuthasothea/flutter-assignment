@@ -5,4 +5,9 @@ sealed class AppEvent {}
 
 class GetSettingAppEvent extends AppEvent {}
 
-class ChangeSettingAppEvent extends AppEvent {}
+class ChangeThemeAppEvent extends AppEvent {
+
+  final bool isNightMode;
+  ChangeThemeAppEvent({required this.isNightMode});
+
+}

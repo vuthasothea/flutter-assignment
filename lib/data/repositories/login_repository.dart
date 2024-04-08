@@ -1,11 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:final_project_with_firebase/core/exceptions/login_exception.dart';
 import 'package:final_project_with_firebase/data/models/login_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginRepository {
-
-  final db = FirebaseFirestore.instance;
 
   Future<void> doLogin(LoginModel loginModel) async {
     try {
