@@ -54,18 +54,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: Text("Enterainment news"),
                 ),
                 Divider(),
+                ListTile(
+                  iconColor: Colors.red[900],
+                  textColor: Colors.red[900],
+                  leading: Icon(Icons.logout_rounded),
+                  title: Text("Logout"),
+                  onTap: () async {
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                  },
+                )                
               ],
             ),
-            ListTile(
-              iconColor: Colors.red[900],
-              textColor: Colors.red[900],
-              leading: Icon(Icons.logout_rounded),
-              title: Text("Logout"),
-              onTap: () async {
-                await FirebaseAuth.instance.signOut();
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-              },
-            )
           ],
         ),
       ),

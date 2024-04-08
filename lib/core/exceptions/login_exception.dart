@@ -13,6 +13,8 @@ class LoginException implements Exception {
         return const LoginException('Email is not found, please create an account.');
       case 'wrong-password':
         return const LoginException('Incorrect password, please try again.');
+      case 'invalid-credential':
+        return const LoginException('Invalid email or password.');
       default:
         return const LoginException();
     }
