@@ -45,7 +45,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             );
           } else if(state is LoginSuccessState) {
-            EasyLoading.showSuccess("Login Successfully");
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
           }          
         },
