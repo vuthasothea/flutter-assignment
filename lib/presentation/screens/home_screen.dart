@@ -3,6 +3,7 @@ import 'package:final_project_with_firebase/data/models/news_model.dart';
 import 'package:final_project_with_firebase/presentation/blocs/app/app_bloc.dart';
 import 'package:final_project_with_firebase/presentation/blocs/news/news_bloc.dart';
 import 'package:final_project_with_firebase/presentation/screens/login_screen.dart';
+import 'package:final_project_with_firebase/presentation/screens/news_detail_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         clipBehavior: Clip.hardEdge,
                         child: InkWell(
                           onTap: () {
-                            
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => NewsDetailScreen(newsModel: newsList[index])));
                           },
                           child: Padding(
                             padding: EdgeInsets.all(AppVariable.STANDARD_PADDING/2),
@@ -55,15 +56,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8)
                                   ),
-                                  child: Image(
-                                    image: NetworkImage(newsList[index].urlImage ?? ""),
-                                    fit: BoxFit.cover,
-                                    errorBuilder: (context, error, stackTrace) {
-                                      return Image(
-                                        image: NetworkImage("https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"),
-                                        fit: BoxFit.cover,
-                                      );
-                                    },
+                                  child: Hero(
+                                    tag: newsList[index].urlNews!,
+                                    child: Image(
+                                      image: NetworkImage(newsList[index].urlImage ?? ""),
+                                      fit: BoxFit.cover,
+                                      errorBuilder: (context, error, stackTrace) {
+                                        return Image(
+                                          image: NetworkImage("https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"),
+                                          fit: BoxFit.cover,
+                                        );
+                                      },
+                                    ),
                                   ),
                                 ),
                                 SizedBox(width: AppVariable.STANDARD_PADDING),
@@ -102,9 +106,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       accountName: Text(user.displayName!),
                       accountEmail: Text(user.email!),
                       currentAccountPicture: CircleAvatar(
-                        child: Text(user.displayName![0],
-                            style: TextStyle(
-                                fontSize: 28, fontWeight: FontWeight.bold)),
+                        child: Text(
+                          user.displayName![0].toUpperCase(),
+                          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)
+                        ),
                       ),
                     ),
                     ListView(

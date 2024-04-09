@@ -19,7 +19,7 @@ class NewsRepository {
     var url = Uri.parse("$_BASEURL/$category");
     var response = await http.get(url);
     var listJson = (jsonDecode(response.body)["articles"] as List);
-    var listNews = listJson.map((json) => NewsModel.fromJson(json)).toList();
+    var listNews = listJson.where((element) => element["title"] != "[Removed]").map((json) => NewsModel.fromJson(json)).toList();
 
     return listNews;
   }

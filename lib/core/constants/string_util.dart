@@ -1,3 +1,6 @@
+import 'package:final_project_with_firebase/core/constants/app_variable.dart';
+import 'package:intl/intl.dart';
+
 class StringUtil {
 
   static bool validateEmail(String email) {
@@ -10,6 +13,11 @@ class StringUtil {
     }
 
     return false;
+  }
+
+  static String getFormatDateTime(DateTime dateTime) {
+    final datetimeFormat = DateFormat(AppVariable.DATE_FORMAT, "en_US");
+    return datetimeFormat.format(dateTime);
   }
 
 }
