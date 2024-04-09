@@ -8,15 +8,19 @@ class CommentRepository {
   Future<List<CommentModel>> getCommentByNews(String newsUrl) async {
     List<CommentModel> commentList = [];
 
-    final querySnapshot = await db.collection("comments")
-                                  .where("NewsUrl", isEqualTo: newsUrl)
-                                  .get();
+    try {
+      final querySnapshot = await db.collection("comments")
+                                    .where("NewsUrl", isEqualTo: newsUrl)
+                                    .get();
 
-    for(var doc in querySnapshot.docs) {
-      Map<String, dynamic> data = doc.data();
-      CommentModel commentModel = CommentModel.fromJson(data);
+      for(var doc in querySnapshot.docs) {
+        Map<String, dynamic> data = doc.data();
+        CommentModel commentModel = CommentModel.fromJson(data);
 
-      commentList.add(commentModel);
+        commentList.add(commentModel);
+      }
+    } catch(_) {
+      
     }
 
     return commentList;

@@ -64,9 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: 120,
                         ),
                         SizedBox(height: AppVariable.STANDARD_PADDING / 2),
-                        Text("Welcome Back",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 22)),
+                        Text("Welcome Back", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
                         Text("Sign to countinue"),
                         SizedBox(height: AppVariable.STANDARD_PADDING),
                         Form(
@@ -91,15 +89,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.lock_outline),
                                   suffixIcon: IconButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          _invisiblePassword =
-                                              !_invisiblePassword;
-                                        });
-                                      },
-                                      icon: Icon(_invisiblePassword
-                                          ? Icons.visibility
-                                          : Icons.visibility_off)),
+                                    onPressed: () {
+                                      setState(() {
+                                        _invisiblePassword = !_invisiblePassword;
+                                      });
+                                    },
+                                    icon: Icon(_invisiblePassword ? Icons.visibility : Icons.visibility_off)
+                                  ),
                                   label: Text("Password"),
                                 ),
                                 validator: (value) {
@@ -112,13 +108,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               SizedBox(height: AppVariable.STANDARD_PADDING),
                               LoginButton(
-                                  title: "Login",
-                                  onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
-                                      LoginModel loginModel = LoginModel(email: email!, password: password!);
-                                      BlocProvider.of<LoginBloc>(context).add(DoLoginEvent(loginModel: loginModel));
-                                    }
-                                  }),
+                                title: "Login",
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    LoginModel loginModel = LoginModel(email: email!, password: password!);
+                                    BlocProvider.of<LoginBloc>(context).add(DoLoginEvent(loginModel: loginModel));
+                                  }
+                                }
+                              ),
                               SizedBox(height: AppVariable.STANDARD_PADDING),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,

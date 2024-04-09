@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-VoidCallback onPressed = () {};
 class LoginButton extends StatelessWidget {
   
   final VoidCallback onPressed;
