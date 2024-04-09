@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:final_project_with_firebase/core/themes/app_theme.dart';
 import 'package:final_project_with_firebase/presentation/blocs/app/app_bloc.dart';
 import 'package:final_project_with_firebase/presentation/screens/home_screen.dart';
@@ -18,6 +20,7 @@ Future<void> main() async {
     projectId: 'flutter-final-project-bd9b8',
     storageBucket: 'com.example.final_project_with_firebase',
   ));
+  HttpOverrides.global = AcceptSSLCertificate(); // Accept SSL Certificate
 
   runApp(MyApp());
 }
@@ -42,4 +45,15 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+// Accept SSL Certificate
+//------------------------------------------------
+class AcceptSSLCertificate extends HttpOverrides {
+
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)..badCertificateCallback = (cert, host, port) => true;
+  }  
+
 }
