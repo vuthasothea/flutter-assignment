@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:final_project_with_firebase/core/themes/app_theme.dart';
 import 'package:final_project_with_firebase/presentation/blocs/app/app_bloc.dart';
 import 'package:final_project_with_firebase/presentation/screens/home_screen.dart';
